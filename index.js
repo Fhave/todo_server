@@ -2,6 +2,7 @@ const express = require ("express");
 const dotenv = require ("dotenv");
 const mongoose = require ("mongoose");
 const cors = require ("cors");
+const todosRoutes = require ("./routes/todos")
 
 const app = express();
 dotenv.config();
@@ -21,6 +22,8 @@ mongoose.connect(mongodb,
     useUnifiedTopology: true
   }
 );
+
+app.use('/todos', todosRoutes);
 
 app.get('/', (req,res) => {
   res.send('Trial')
