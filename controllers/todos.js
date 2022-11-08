@@ -1,7 +1,7 @@
 const mongoose = require ("mongoose");
 const Todo = require('./../models/todos');
 
-export const readTodos = async(req,res) => {
+const readTodos = async(req,res) => {
   try {
     const todos = await Todo.find();
     res.status(200).json(todos);
@@ -10,7 +10,7 @@ export const readTodos = async(req,res) => {
   }
 }
 
-export const createTodos = async(req,res) => {
+const createTodos = async(req,res) => {
   const todos = new Todo(req.body);
   try {
     await Todo.save();
@@ -19,3 +19,5 @@ export const createTodos = async(req,res) => {
     res.status(409).json({err: err.message})
   }
 }
+
+module.exports = { readTodos, createTodos };
