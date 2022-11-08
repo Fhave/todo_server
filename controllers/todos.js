@@ -1,21 +1,21 @@
 const mongoose = require ("mongoose");
-const Todo = require('./../models/todos');
+const Todo = require('./../models/todos.js');
 
 const readTodos = async(req,res) => {
   try {
     const todos = await Todo.find();
     res.status(200).json(todos);
-  } catch (error) {
+  } catch (err) {
     res.status(404).json({err: err.message})
   }
 }
 
 const createTodos = async(req,res) => {
-  const todos = new Todo(req.body);
+  const todo = new Todo(req.body);
   try {
-    await Todo.save();
+    await Todo.create(todo);
     res.status(200).json(todo);
-  } catch (error) {
+  } catch (err) {
     res.status(409).json({err: err.message})
   }
 }
