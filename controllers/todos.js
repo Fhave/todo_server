@@ -10,7 +10,7 @@ const readTodos = async(req,res) => {
   }
 }
 
-const createTodos = async(req,res) => {
+const createTodo = async(req,res) => {
   const todo = new Todo(req.body);
   try {
     await Todo.create(todo);
@@ -20,4 +20,4 @@ const createTodos = async(req,res) => {
   }
 }
 
-module.exports = { readTodos, createTodos };
+module.exports = { readTodos, createTodo };
