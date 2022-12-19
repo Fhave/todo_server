@@ -12,11 +12,8 @@ app.use(express.urlencoded({extended:true}));
 
 app.use(cors());
 
-const mongodb = "mongodb+srv://test:test1234@cluster1.wvnchbt.mongodb.net/mern_todo_db?retryWrites=true&w=majority";
-
-
 const PORT = process.env.PORT || 5000;
-mongoose.connect(mongodb,
+mongoose.connect(process.env.mongodb,
   {
     useNewUrlParser: true, 
     useUnifiedTopology: true
